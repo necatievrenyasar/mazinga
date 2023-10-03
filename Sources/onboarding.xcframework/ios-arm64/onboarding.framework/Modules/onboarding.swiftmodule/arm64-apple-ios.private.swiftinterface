@@ -1,0 +1,76 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.8.1 (swiftlang-5.8.0.124.5 clang-1403.0.22.11.100)
+// swift-module-flags: -target arm64-apple-ios11.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name onboarding
+// swift-module-flags-ignorable: -enable-bare-slash-regex
+import AVFoundation
+import CoreNFC
+import Foundation
+import JitsiMeetSDK
+import NFCReaderApple
+import OpenSSL
+import Swift
+import UIKit
+import Vision
+import WebKit
+import _Concurrency
+import _StringProcessing
+@_exported import onboarding
+extension UIKit.UIDevice {
+  @_Concurrency.MainActor(unsafe) public static let modelName: Swift.String
+  @_Concurrency.MainActor(unsafe) public static let hasNFC: Swift.Bool
+}
+public protocol OnboardingBottomSheetDialogDelegate {
+  func onOnboardingBottomSheetDialogSelect(index: Swift.Int)
+}
+@_hasMissingDesignatedInitializers open class Spinner {
+  public static var style: UIKit.UIActivityIndicatorView.Style
+  public static var baseBackColor: UIKit.UIColor
+  public static var baseColor: UIKit.UIColor
+  public static func start(style: UIKit.UIActivityIndicatorView.Style = style, backColor: UIKit.UIColor = baseBackColor, baseColor: UIKit.UIColor = baseColor)
+  public static func stop()
+  @objc public static func update()
+  @objc deinit
+}
+public class OnboardingTheme {
+  public init(titleColor: UIKit.UIColor? = nil, borderColor: UIKit.UIColor? = nil, boxEmptyColor: UIKit.UIColor? = nil, boxFillColor: UIKit.UIColor? = nil, mainTextColor: UIKit.UIColor? = nil, revertTextColor: UIKit.UIColor? = nil, warningTextColor: UIKit.UIColor? = nil, backgroundColor: UIKit.UIColor? = nil, dialogBackgroundColor: UIKit.UIColor? = nil, buttonColor: UIKit.UIColor? = nil, buttonTextColor: UIKit.UIColor? = nil, loadingBackgroundColor: UIKit.UIColor? = nil, dialogButtonColor: UIKit.UIColor? = nil, dialogButtonTextColor: UIKit.UIColor? = nil, boxHintFillColor: UIKit.UIColor? = nil)
+  @objc deinit
+}
+public protocol OnboardingWarningDelegate {
+  func onOnboardingWarningClosed()
+}
+public protocol OnboardingBottomSheetDialogItemDelegate {
+  func onOnboardingBottomSheetDialogItemDelegateSelect(index: Swift.Int)
+}
+public protocol OnboardingDelegate {
+  func onOnboardingResult(resultCode: onboarding.OnboardingResult, code: Swift.String, message: Swift.String, processId: Swift.String)
+}
+public enum OnboardingResult {
+  case FAIL
+  case SUCCESS
+  case SUCCESS_SELF
+  public static func == (a: onboarding.OnboardingResult, b: onboarding.OnboardingResult) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public class Onboarding {
+  public static var delegate: (any onboarding.OnboardingDelegate)?
+  public static var language: Swift.String?
+  public static func start(vc: UIKit.UINavigationController?, process: Swift.String, lng: Swift.String)
+  public static func start(vc: UIKit.UINavigationController?, language: Swift.String? = nil, process: Swift.String? = nil, initialParameters: Swift.String? = nil, externalKey: Swift.String? = nil)
+  public static func test(vc: UIKit.UINavigationController, parameters: Swift.String, resource: Swift.String, theme: onboarding.OnboardingTheme? = nil, endPoint: Swift.String? = nil)
+  public init(vc: UIKit.UINavigationController?)
+  public func setEndpoint(endPoint: Swift.String) -> onboarding.Onboarding
+  public func setLanguage(language: Swift.String?) -> onboarding.Onboarding
+  public func setTenant(tenant: Swift.String?) -> onboarding.Onboarding
+  public func setProcess(process: Swift.String?) -> onboarding.Onboarding
+  public func setJson(json: Swift.String?) -> onboarding.Onboarding
+  public func setPredefined(predefined: Swift.String?) -> onboarding.Onboarding
+  public func setExternalKey(externalKey: Swift.String?) -> onboarding.Onboarding
+  public func setTheme(theme: onboarding.OnboardingTheme) -> onboarding.Onboarding
+  public func start()
+  @objc deinit
+}
+extension onboarding.OnboardingResult : Swift.Equatable {}
+extension onboarding.OnboardingResult : Swift.Hashable {}
