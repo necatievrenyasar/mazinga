@@ -2,7 +2,6 @@
 //  SceneDelegate.swift
 //  OnboardExample
 //
-//  Created by ali gonay on 3.10.2023.
 //
 
 import UIKit
